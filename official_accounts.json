@@ -1,0 +1,48 @@
+{
+"info": {
+"accounts": {
+"youTube": "https://chat.whatsapp.com/ClNQxTnKyFx6eZnJcvqsPY",
+"instagram": "https://chat.whatsapp.com/ClNQxTnKyFx6eZnJcvqsPY",
+"gatabot_md": "https://chat.whatsapp.com/ClNQxTnKyFx6eZnJcvqsPY",
+"gatabotlite_md": "https://chat.whatsapp.com/ClNQxTnKyFx6eZnJcvqsPY",
+"facebook": "https://chat.whatsapp.com/ClNQxTnKyFx6eZnJcvqsPY",
+"tiktok": "https://chat.whatsapp.com/ClNQxTnKyFx6eZnJcvqsPY",
+"threads": "https://chat.whatsapp.com/ClNQxTnKyFx6eZnJcvqsPY",
+"paypal": "https://chat.whatsapp.com/ClNQxTnKyFx6eZnJcvqsPY",
+"github": "https://chat.whatsapp.com/ClNQxTnKyFx6eZnJcvqsPY",
+"mail": "https://chat.whatsapp.com/ClNQxTnKyFx6eZnJcvqsPY",
+"all": "https://chat.whatsapp.com/ClNQxTnKyFx6eZnJcvqsPY"
+},
+"channels": {
+"channel1": "https://whatsapp.com/channel/0029VaeXAKJAjPXLKGuZSr46",
+"channel2": "https://whatsapp.com/channel/0029VaeXAKJAjPXLKGuZSr46",
+"channel3": "https://whatsapp.com/channel/0029VaeXAKJAjPXLKGuZSr46",
+"channel4": "https://whatsapp.com/channel/0029VaeXAKJAjPXLKGuZSr46"
+},
+"groups": {
+"group1": "https://chat.whatsapp.com/ClNQxTnKyFx6eZnJcvqsPY",
+"group2": "https://whatsapp.com/channel/0029VaeXAKJAjPXLKGuZSr46",
+"group3": "https://chat.whatsapp.com/ClNQxTnKyFx6eZnJcvqsPY",
+"group4": "https://whatsapp.com/channel/0029VaeXAKJAjPXLKGuZSr46",
+"group5": "https://chat.whatsapp.com/ClNQxTnKyFx6eZnJcvqsPY",
+"group6": "https://whatsapp.com/channel/0029VaeXAKJAjPXLKGuZSr46"
+},
+"collaboration": {
+"group1": "https://whatsapp.com/channel/0029VaeXAKJAjPXLKGuZSr46",
+"group2": "https://chat.whatsapp.com/ClNQxTnKyFx6eZnJcvqsPY",
+"group3": "https://whatsapp.com/channel/0029VaeXAKJAjPXLKGuZSr46",
+"group4": "https://chat.whatsapp.com/ClNQxTnKyFx6eZnJcvqsPY"
+},
+"sponsors": {
+"boxmine": "https://whatsapp.com/channel/0029VaeXAKJAjPXLKGuZSr46",
+"cafirexos": "https://whatsapp.com/channel/0029VaeXAKJAjPXLKGuZSr46",
+"vortexus": "https://chat.whatsapp.com/ClNQxTnKyFx6eZnJcvqsPY",
+"asif": "https://chat.whatsapp.com/ClNQxTnKyFx6eZnJcvqsPY"
+},
+"others": {
+"assistance_num": "https://whatsapp.com/channel/0029VaeXAKJAjPXLKGuZSr46",
+"yt_vid": "https://chat.whatsapp.com/ClNQxTnKyFx6eZnJcvqsPY",
+"group_support": "https://whatsapp.com/channel/0029VaeXAKJAjPXLKGuZSr46"
+}
+}
+}
