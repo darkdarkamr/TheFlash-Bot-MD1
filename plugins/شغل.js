@@ -14,57 +14,61 @@ const handler = async (m, { command, usedPrefix, conn, args, text }) => {
   await conn.sendMessage(m.chat, { react: { text: '⏳', key: m.key } });
 
   try {
-    const yt_play = await search(args.join(' '));
-    const yt_result = yt_play[0];
+    const ytResults = await searchYouTube(args.join(' '));
+    if (!ytResults.length) throw new Error("❗ لم يتم العثور على نتائج.");
 
+    const ytResult = ytResults[0];
     const messageContent = {
-      text: `نتيجة البحث عن : ${text}\nالعنوان: ${yt_result.title}\nالمشاهدات: ${MilesNumber(yt_result.views)}\nالرابط: ${yt_result.url}`,
-      thumbnail: yt_result.thumbnail,
+      text: `🔍 نتيجة البحث: ${text}\n📄 العنوان: ${ytResult.title}\n👁️ المشاهدات: ${formatNumber(ytResult.views)}\n🔗 الرابط: ${ytResult.url}`,
+      thumbnail: ytResult.thumbnail,
     };
 
-    await sendInteractiveMessage(conn, m.chat, messageContent, usedPrefix, yt_result.url);
+    await sendInteractiveMessage(conn, m.chat, messageContent, usedPrefix, ytResult.url);
 
   } catch (error) {
-    await conn.sendMessage(m.chat, { text: `❗ خطأ أثناء البحث. تأكد من النص أو الرابط.` }, { quoted: m });
+    const errorMessage = error.response?.data?.message || error.message || "حدث خطأ غير متوقع.";
+    await conn.sendMessage(m.chat, { text: `❗ خطأ: ${errorMessage}` }, { quoted: m });
   }
 };
 
 const sendInteractiveMessage = async (conn, chat, content, prefix, url) => {
-  const messa = await prepareWAMessageMedia({ image: { url: content.thumbnail } }, { upload: conn.waUploadToServer });
+  const thumbnailMedia = await prepareWAMessageMedia({ image: { url: content.thumbnail } }, { upload: conn.waUploadToServer });
 
   let msg = generateWAMessageFromContent(chat, {
-    viewOnceMessage: {
-      message: {
-        interactiveMessage: {
-          body: { text: content.text },
-          footer: { text: `© Bot` },
-          header: {
-            hasMediaAttachment: true,
-            imageMessage: messa.imageMessage,
+    templateMessage: {
+      hydratedTemplate: {
+        imageMessage: thumbnailMedia.imageMessage,
+        hydratedContentText: content.text,
+        hydratedFooterText: "© منار بوت",
+        hydratedButtons: [
+          {
+            quickReplyButton: {
+              displayText: "🎶 تحميل صوتي",
+              id: `${prefix}mp3 ${url}`
+            }
           },
-          nativeFlowMessage: {
-            buttons: [
-              { name: 'quick_reply', buttonParamsJson: JSON.stringify({ display_text: 'صوتي', id: `${prefix}mp3 ${url}` }) },
-              { name: 'quick_reply', buttonParamsJson: JSON.stringify({ display_text: 'فيديو', id: `${prefix}mp4 ${url}` }) }
-            ],
-            messageParamsJson: "",
+          {
+            quickReplyButton: {
+              displayText: "🎥 تحميل فيديو",
+              id: `${prefix}mp4 ${url}`
+            }
           },
-        },
-      },
-    },
+        ]
+      }
+    }
   }, { userJid: conn.user.jid, quoted: chat });
 
   await conn.sendMessage(chat, { react: { text: '✔️', key: m.key } });
   await conn.relayMessage(chat, msg.message, { messageId: msg.key.id });
 };
 
-const search = async (query) => {
+const searchYouTube = async (query) => {
   const searchResults = await yts({ query, hl: 'ar', gl: 'AR' });
   return searchResults.videos;
 };
 
-const MilesNumber = (number) => {
-  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+const formatNumber = (number) => {
+  return number.toLocaleString('ar-EG');
 };
 
 handler.command = /^(شغل|mp3|mp4)$/i;
